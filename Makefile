@@ -3,7 +3,7 @@ GOBUILD=$(GOCMD) build
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
 BINARY_NAME=$(shell basename $(PWD))
-VERSION=0.0.1
+# VERSION=0.0.1
 ARCH=$(shell go env GOARCH)
 
 # Define a variable for the command to run
@@ -22,7 +22,7 @@ test: ## Run tests
 	@$(GOTEST) ./...
 build: ## Build the project
 	@chmod +x ./scripts/bash/*
-	@./scripts/bash/build.sh --version $(VERSION)
+	@./scripts/bash/build.sh
 clean: ## Clean up build objects
 	@$(GOCMD) clean
 	@rm -rf build/
@@ -40,4 +40,7 @@ ignore: ## Add build/ to .gitignore
 	@if ! grep -q "build/" .gitignore; then \
 		echo "build/" >> .gitignore; \
 	fi
+cmd: tidy ## Run the command
+	@./scripts/bash/build.sh --cmd
+	@./build/$(BINARY_NAME)_$(ARCH) $(CMD)
 

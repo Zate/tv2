@@ -4,19 +4,24 @@ os=linux
 archs=(amd64 arm arm64)
 build_root=build/
 bin_path=$build_root/$bin
-version=""
+# version=""
 container=0
 
 for arg in "$@"
 do
   case $arg in
-    --version)
-      shift
-      version=$1
-      shift
-      ;;
+    # --version)
+    #   shift
+    #   version=$1
+    #   shift
+    #   ;;
     --image)
       container=1
+      shift
+      ;;
+    --cmd)
+      shift
+      archs=(amd64)
       shift
       ;;
   esac
@@ -26,10 +31,10 @@ if [ -z $bin ]; then
   bin=$(echo $(basename $(pwd)))
 fi
 
-if [ -z $version ]; then
-  echo "A version must be specified."
-  exit 1
-fi
+# if [ -z $version ]; then
+#   echo "A version must be specified."
+#   exit 1
+# fi
 
 if [ -z $build_root ]; then
   exit 1

@@ -1,0 +1,7 @@
+---
+# Talos-specific configurations
+talos:
+  version: "1.7.5"
+  cluster_name: "mamba"
+  cluster_ip: "192.168.0.1"
+  cluster_nodes: 40

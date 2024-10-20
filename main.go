@@ -2,9 +2,7 @@ package main
 
 import "github.com/Zate/tv2/cmd"
 
-func main() {
-	cmd.Execute()
-}
+func main() { cmd.Execute() }
 
 // List of commands to build
 // - clean
